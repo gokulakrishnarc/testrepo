@@ -1,0 +1,96 @@
+sudo service mongod start
+sudo service mongod stop
+sudo service mongod status
+
+sudo service mysql start
+sudo service mysql stop
+
+background-color :rgba(102, 116, 124, 0.959);
+ng update @angular/core
+sudo npm uninstall npm -g
+
+to show version of 
+npm show @angular/cdk versions
+npm show @angular/material versions
+
+npm uninstall @angular/cdk @angular/material
+
+docker rmi $(docker images -a -q)
+docker kill $(docker ps -q)
+docker rm $(docker ps -q)
+docker rm $(docker ps -q -f status=exited)
+docker rmi -f (image id)
+docker stop 19a789e237da(containerid)
+
+lsof -i:3306
+
+Important:
+
+docker rm $(docker ps -a -q)
+docker rmi $(docker images -a -q)
+
+
+WorldExplorerUI/node_modules/protractor/node_modules/webdriver-manager/selenium/chromedriver_77.0.3865.40.zip
+
+---
+
+docker-compose up
+docker build -t dockr-img1
+docker run -p 4200:80 dockr-img1
+-------
+
+
+goto root dir of UI 
+following com crarte empty dockerfile 
+	touch dockerfile 
+
+put the entry in dockerfile 
+build 
+ docker build -t node-web-ex .
+
+
+docker build -t dockerangular .
+docker run -p 4200:80 docker-sba1
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+FROM node:12.12.0-alpine as build-step
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+COPY . /usr/src/app
+RUN npm install
+
+EXPOSE 4200
+CMD npm run start
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+FROM node:12.12.0-alpine as build-step
+
+WORKDIR /app
+
+COPY package.json ./
+
+COPY . .
+
+CMD npm run start
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+FROM node:12.12.0-alpine as build-step
+
+WORKDIR /app
+
+COPY package.json ./
+RUN npm install
+COPY . .
+
+CMD npm run build
+ 
+FROM nginx:1.16.0-alpine as prod-stage
+COPY --from=build-step /app/dist/dockerang /usr/share/nginx/html
+EXPOSE 4200
+CMD ["nginx","-g","deamon off;"]
+
+
+-------------------
